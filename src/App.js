@@ -3,11 +3,22 @@ import TodoList from './components/TodoList';
 import Filters from './components/Filters';
 import 'antd/dist/reset.css';
 import './App.css';
-import React from 'react';
+import React, { useEffect } from 'react';
+import { setupServer } from './fakeApi';
+import { useDispatch } from 'react-redux';
+import { fetchTodos } from './components/TodoList/todosSlice';
+
+if (process.env.NODE_ENV === 'development') {
+	setupServer();
+}
 
 const { Title } = Typography;
 
 function App() {
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(fetchTodos());
+	}, []);
 	return (
 		<div
 			style={{

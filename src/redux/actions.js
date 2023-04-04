@@ -1,3 +1,5 @@
+///* No need more *
+
 export const addTodo = (data) => {
 	return {
 		type: 'todoList/addTodo',
